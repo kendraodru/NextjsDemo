@@ -1,26 +1,64 @@
-import Head from 'next/head'
-import Layout, { siteTitle } from '../components/layout'
-import utilStyles from '../styles/utils.module.css'
+import Head from 'next/head';
+import Layout, { siteTitle } from '../components/layout';
+import utilStyles from '../styles/utils.module.css';
+import { getSortedPostsData } from '../lib/posts';
 
-export default function Home() {
+
+export async function getStaticProps() {
+  const allPostsData = getSortedPostsData()
+  return {
+    props: {
+      allPostsData
+    }
+  }
+}
+
+export default function Home({ allPostsData }) {
   return (
     <Layout home>
       <Head>
         <title>{siteTitle}</title>
       </Head>
-      <section className={utilStyles.headingMd}>
-        <p>I am a Full Stack developer with experience in Ruby, Rails, 
-          JavaScript, React, and Redux. As a developer, I enjoy finding 
-          alternative and increasingly efficient solutions. When I'm not coding,
-          you can catch me surfing, hiking, or playing a good game of Catan.</p>
-        <p>
-          (Contact me on {' '}
-          <a href="https://www.linkedin.com/in/kendra-odrunia-9272441a4/">Linkedin</a>.)
-        </p>
+      <section className={utilStyles.headingMd}></section>
+      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
+        <h2 className={utilStyles.headingLg}>Blog</h2>
+        <ul className={utilStyles.list}>
+          {allPostsData.map(({ id, date, title }) => (
+            <li className={utilStyles.listItem} key={id}>
+              {title}
+              <br />
+              {id}
+              <br />
+              {date}
+            </li>
+          ))}
+        </ul>
       </section>
     </Layout>
   )
 }
+
+
+// export default function Home({allPostsData}) {
+//   return (
+//     <Layout home>
+//       <Head>
+//         <title>{siteTitle}</title>
+//       </Head>
+//       <section className={utilStyles.headingMd}>
+//         <p>I am a Full Stack developer with experience in Ruby, Rails, 
+//           JavaScript, React, and Redux. As a developer, I enjoy finding 
+//           alternative and increasingly efficient solutions. When I'm not coding,
+//           you can catch me surfing, hiking, or playing a good game of Catan.</p>
+//         <p>
+//           (Contact me on {' '}
+//           <a href="https://www.linkedin.com/in/kendra-odrunia-9272441a4/">Linkedin</a>.)
+//         </p>
+//       </section>
+//     </Layout>
+//   )
+// }
+
 
 
 

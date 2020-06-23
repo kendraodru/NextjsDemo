@@ -39,25 +39,7 @@ export default function Home({ allPostsData }) {
 }
 
 
-// export default function Home({allPostsData}) {
-//   return (
-//     <Layout home>
-//       <Head>
-//         <title>{siteTitle}</title>
-//       </Head>
-//       <section className={utilStyles.headingMd}>
-//         <p>I am a Full Stack developer with experience in Ruby, Rails, 
-//           JavaScript, React, and Redux. As a developer, I enjoy finding 
-//           alternative and increasingly efficient solutions. When I'm not coding,
-//           you can catch me surfing, hiking, or playing a good game of Catan.</p>
-//         <p>
-//           (Contact me on {' '}
-//           <a href="https://www.linkedin.com/in/kendra-odrunia-9272441a4/">Linkedin</a>.)
-//         </p>
-//       </section>
-//     </Layout>
-//   )
-// }
+// 
 
 
 
